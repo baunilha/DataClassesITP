@@ -55,13 +55,14 @@ def submit():
 	
 	if request.method == "POST" and course_form.validate():
 	
+		now = datetime.datetime.now()
 	# get form data - create new course
 		course = models.Course()
 		
 		course.title = request.form.get('title')
 		course.description = request.form.get('description','')
 		course.instructor = request.form.get('instructor')
-		course.slug = slugify(course.title + " " + course.instructor)
+		course.slug = slugify(course.title + "-" + course.instructor + "-" + now.strftime("%f"))
 		course.semester = request.form.get('semester')
 		course.year = request.form.get('year')
 		course.categories = request.form.getlist('categories')

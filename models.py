@@ -8,6 +8,7 @@ from datetime import datetime
 class Comment(EmbeddedDocument):
 	name = StringField(required=False)
 	comment = StringField()
+	rating = IntField()
 	timestamp = DateTimeField(default=datetime.now())
 
 class Course(Document):
