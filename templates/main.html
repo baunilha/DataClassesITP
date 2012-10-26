@@ -9,16 +9,16 @@
 
 	<!-- left column -->
 	<div class="span12">
-		<h3>Classes</h3>
+		<h2>Classes</h2>
 		
 		{% for course in courses %}
-			<h4><a href="/courses/{{ course.slug }}">{{ course.title }}</a></h4>
+			<h3><a href="/courses/{{ course.slug }}">{{ course.title }}</a></h3>
 			<p>by {{ course.instructor }}</p>
 			<p>
 			{% for cat in course.categories %}
 				<span class="label label-inverse"><a href="/category/{{ cat }}">{{ cat|replace("_"," ")}}</a></span>
 			{% endfor %}
-			<p>by {{ course.description }}</p>
+			<p><h1>"</h1>{{ course.description }}</p>
 			<hr/>
 		{% endfor %}
 		
