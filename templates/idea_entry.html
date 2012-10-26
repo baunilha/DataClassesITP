@@ -10,17 +10,18 @@
 	<!-- left column -->
 	<div class="span12">
 		<h2>Class: {{ course.title }}</h2>
-		<p>Instructor: {{ course.instructor }}</p>
+		<p>by {{ course.instructor }}</p>
 		<hr>
-		<p>Description: {{ course.description }}</p>
-		<p>Categories:
+		<p>{{ course.description }}</p>
+		<br/>
+		<h3>Categories:</h3>
 			<ul>
 			{% for c in course.categories %}
 			<li>{{ c|replace("_"," ") }}</li>
 			{% endfor %}
 			</ul>
-		</p>
 
+		<br/>	
 		<p>Added: {{ course.timestamp }} | id: {{ course.id }}</p>
 		
 		<hr>
@@ -45,20 +46,17 @@
 				<form method="POST" action="/courses/{{ course.id }}/comment">
 					
 					<label for="comment"><h3 class="comment3">Comment<h3></label>
-					<textarea type="text" cols="200" rows="10" id="comment" name="comment"></textarea>
+					<textarea type="text" cols="500" rows="10" id="comment" name="comment"></textarea>
 					
 					<label>
-					<button type="submit" class="btn btn-primary">Comment</button>
+					<button type="submit" class="btn btn-info">Comment</button>
 					</label>
 				</form>
 			</div>
 		</div>
 		
 
-	</div>
-
-
-	
+	</div>x	
 
 </div>
 
