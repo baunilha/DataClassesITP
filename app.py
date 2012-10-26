@@ -59,9 +59,9 @@ def submit():
 		course = models.Course()
 		
 		course.title = request.form.get('title')
-		course.slug = slugify(course.title + " " + course.instructor)
 		course.description = request.form.get('description','')
 		course.instructor = request.form.get('instructor')
+		course.slug = slugify(course.title + " " + course.instructor)
 		course.semester = request.form.get('semester')
 		course.year = request.form.get('year')
 		course.categories = request.form.getlist('categories')
