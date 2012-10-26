@@ -9,11 +9,11 @@
 
 	<!-- left column -->
 	<div class="span12">
-		<h2>IDEA: {{ course.title }}</h2>
-		<p>By {{ course.instructor }}</p>
+		<h2>Class: {{ course.title }}</h2>
+		<p>Instructor {{ course.instructor }}</p>
 		<hr>
-		<p>{{ course.description }}</p>
-		<p>
+		<p>Description: {{ course.description }}</p>
+		<p>Categories:
 			<ul>
 			{% for c in course.categories %}
 			<li>{{ c|replace("_"," ") }}</li>
@@ -21,7 +21,7 @@
 			</ul>
 		</p>
 
-		<p>added: {{ course.timestamp }} | id: {{ course.id }}</p>
+		<p>Added: {{ course.timestamp }} | id: {{ course.id }}</p>
 		
 		<hr>
 
@@ -29,7 +29,7 @@
 		<div class="row">
 
 			<!-- DISPLAY COMMENTS -->
-			<div class="span5">
+			<div class="span12">
 				{% for comment in course.comments %}
 				<div class="comment">
 					<span class="commenter">{{ comment.name }} said,</span><br>
@@ -41,8 +41,8 @@
 			</div>
 
 			<!-- ADD COMMENT -->
-			<div class="span5">
-				<form method="POST" action="/ideas/{{ course.id }}/comment">
+			<div class="span12">
+				<form method="POST" action="/courses/{{ course.id }}/comment">
 					<label for="name">First Name</label>
 					<input type="text" id="name" name="name">
 					

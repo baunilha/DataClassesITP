@@ -22,18 +22,29 @@ mongoengine.connect('mydata', host=os.environ.get('MONGOLAB_URI'))
 app.logger.debug("Connecting to MongoLabs")
 
 
+
+
+# ----------- Lists -----------
+
+
 # Create the lists that match the name of the ListField in the models.py
 categories = ['web','physical computing','programming','video','music','installation','social media','developing nations','business','networks', 'fabrication', 'theory', 'art']
 
-# --------- Routes ----------
 
-# this is our main page
+
+
+# --------- ROUTES ----------
+
+
+# this is our MAIN PAGE
 @app.route("/")
 def index():
-	# render the template, retrieve 'course' from the database
-	return render_template("main.html", course=models.Course.objects())
+	# render the template, retrieve 'courses' from the database
+	return render_template("main.html", courses=models.Course.objects())
 
-# this is our main page
+
+
+# this is our SUBMIT COURSES PAGE
 @app.route("/submit", methods=['GET','POST'])
 def submit():
 
@@ -44,11 +55,11 @@ def submit():
 	
 	if request.method == "POST" and course_form.validate():
 	
-	# get form data - create new idea
+	# get form data - create new course
 		course = models.Course()
 		
 		course.title = request.form.get('title')
-		course.slug = slugify(course.title)
+		course.slug = slugify(course.title + " " + course.id)
 		course.description = request.form.get('description','')
 		course.instructor = request.form.get('instructor')
 		course.semester = request.form.get('semester')
@@ -76,7 +87,7 @@ def submit():
 
 
 
-# pages of the courses
+# COURSES PAGE
 @app.route("/courses/<course_slug>")
 def course_display(course_slug):
 
@@ -93,10 +104,37 @@ def course_display(course_slug):
 
 	# render and return the template
 	return render_template('idea_entry.html', **templateData)
+
+
+
+# Display all courses for a SPECIFIC CATEGORY
+@app.route("/category/<cat_name>")
+def by_category(cat_name):
+
+	# try and get courses where cat_name is inside the categories list
+	try:
+		courses = models.Course.objects(categories=cat_name)
+
+	# not found, abort w/ 404 page
+	except:
+		abort(404)
+
+	# prepare data for template
+	templateData = {
+		'current_category' : {
+			'slug' : cat_name,
+			'name' : cat_name.replace('_',' ')
+		},
+		'courses' : courses,
+		'categories' : categories
+	}
+
+	# render and return template
+	return render_template('category_listing.html', **templateData)
 	
 
 
-
+# Comments Page
 @app.route("/courses/<course_id>/comment", methods=['POST'])
 def course_comment(course_id):
 
@@ -127,15 +165,18 @@ def course_comment(course_id):
 	# save it
 	course.save()
 
-	return redirect('/course/%s' % course.slug)
+	return redirect('/courses/%s' % course.slug)
 
 
+
+# Errors...
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template('404.html'), 404
 
 
-# slugify the title 
+
+# Slugify the title to create URLS
 # via http://flask.pocoo.org/snippets/5/
 _punct_re = re.compile(r'[\t !"#$%&\'()*\-/<=>?@\[\\\]^_`{|},.]+')
 def slugify(text, delim=u'-'):
@@ -144,6 +185,8 @@ def slugify(text, delim=u'-'):
 	for word in _punct_re.split(text.lower()):
 		result.extend(unidecode(word).split())
 	return unicode(delim.join(result))
+
+
 
 
 # --------- Server On ----------

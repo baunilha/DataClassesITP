@@ -1,15 +1,13 @@
-{% from "_form_helpers.html" import render_error, render_textarea %}
 {% extends "layout.html" %}
 
 
 {% block body %}
 
-
 <div class="row">
 
 	<!-- left column -->
 	<div class="span6">
-		<h3>Classes</h3>
+		<h3>Courses: {{ current_category.get('name')|title }}</h3>
 		
 		{% for course in courses %}
 			<h4><a href="/courses/{{ course.slug }}">{{ course.title }}</a></h4>
@@ -18,11 +16,23 @@
 			{% for cat in course.categories %}
 				<span class="label label-inverse"><a href="/category/{{ cat }}">{{ cat|replace("_"," ")}}</a></span>
 			{% endfor %}
-			<p>by {{ course.description }}</p>
 			<hr/>
 		{% endfor %}
 		
 	</div>
+
+	<!-- right column -->
+	<div class="span6">
+		<h3>Categories</h3>
+		<ul>
+		{% for cat in categories %}
+		<li><a href="/category/{{ cat|replace(" ","_") }}">{{ cat|title }}</a></li>
+		{% endfor %}
+		</ul>
+
+		<br><br>
+	</div>
+
 </div>
 
 {% endblock %}
