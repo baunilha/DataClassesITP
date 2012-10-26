@@ -1,0 +1,341 @@
+/* Changing the CSS */
+
+/* Body and structure
+-------------------------------------------------- */
+body {
+  background-image: url('http://colourlovers.com.s3.amazonaws.com/images/patterns/50/50713.png');
+  color: #462532;
+}
+
+a {
+  color: #E8DABD;
+  text-decoration: none;
+}
+
+p {
+  color: #462532;
+}
+
+/* LOGO
+-------------------------------------------------- */
+.hero-one {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+  margin-bottom: 0;
+  border: 0;
+  padding-right: 0;
+  padding-left: 0;
+  -webkit-border-radius: 0;
+     -moz-border-radius: 0;
+          border-radius: 0;
+  top: 0;
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#552B3A), color-stop(100%,#844561));
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#552B3A', endColorstr='#844561',GradientType=1 );
+}
+
+.hero-one p {
+}
+
+.top-logo {
+  height: 114px;
+}
+
+.brand {
+  width: 400px;
+  padding-bottom: 10px;
+  height: auto;
+  margin-left: 30px;
+}
+
+
+
+/* Navigation Bar
+-------------------------------------------------- */
+.navbar {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+  margin-bottom: 0;
+  border: 0;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.navbar-inverse {
+  color: #E0AEA4;
+}
+
+.navbar-inverse .navbar-inner {
+  background-color: #552B3A;
+  background-image: -moz-linear-gradient(top, #552B3A, #381C26);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#552B3A), to(#381C26));
+  background-image: -webkit-linear-gradient(top, #552B3A, #381C26);
+  background-image: -o-linear-gradient(top, #552B3A, #381C26);
+  background-image: linear-gradient(to bottom, #552B3A, #381C26);
+  background-repeat: repeat-x;
+  border-color: #552B3A;
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff222222', endColorstr='#ff111111', GradientType=0);
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+
+/* Active menu color - purple and rose */
+.navbar-inverse .nav .active > a, .navbar-inverse .nav .active > a:hover, .navbar-inverse .nav .active > a:focus {
+  color: #E2ADA5;
+  background-color: #472431;
+}
+
+/* Normal menu color - vanilla/cream */
+.navbar-inverse .brand, .navbar-inverse .nav > li > a {
+  color: #E8DABD;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+
+/* Login Dropdown
+-------------------------------------------------- */
+.dropdown-menu {
+  background-image: -moz-linear-gradient(top, #552B3A, #381C26);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#552B3A), to(#381C26));
+  background-image: -webkit-linear-gradient(top, #552B3A, #381C26);
+  background-image: -o-linear-gradient(top, #552B3A, #381C26);
+  background-image: linear-gradient(to bottom, #552B3A, #381C26);
+}
+
+.dropdown-menu a {
+  color: #E8DABD;
+}
+
+input.span2, textarea.span2, .uneditable-input.span2 {
+  width: 165px;
+}
+
+.login {
+  margin: 0px 10px;
+}
+
+.nav-header {
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+  font-size: 14px;
+  color: #54b4d6;
+  text-transform: none;
+  padding: 6px 15px;
+}
+
+/* Big Header
+-------------------------------------------------- */
+.hero-unit {
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#eeeae5), color-stop(100%,#fbf6ed));
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeae5', endColorstr='#fbf6ed',GradientType=1 );
+  -webkit-border-radius: 0px;
+     -moz-border-radius: 0px;
+          border-radius: 0px;
+  margin-bottom: 0px;
+  padding: 60px 60px 50px 60px;
+}
+
+.hero-unit h1 {
+  color: #3696b7;
+}
+
+
+
+/* Search bar in the middle 
+--------------------------------------------------------*/
+.content-container {
+  width: 700px;
+  height: 45px;
+  display: block;
+  margin: auto;
+  background: #f1edea;
+  border: solid 1px #E8DABD;
+  padding: 0px 0px 5px 9px;
+  margin-top: 22px;
+   -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+
+.middle {
+  margin-top: 100px;
+}
+
+
+.dois {
+  height: 100px;
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#2E1720), color-stop(100%,#552B3A));
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2E1720', endColorstr='#552B3A',GradientType=1 );
+}
+
+.navbar-search {
+  background: #f1edea;
+}
+
+.navbar-search .search-query {
+  padding: 10px 10px;
+  width: 635px;
+  background: #f1edea;
+  color: #552B3A;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: normal;
+  line-height: 2;
+  border: 0px;
+  -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0);
+  -moz-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0);
+  box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0);
+}
+
+
+input[type="text"], input[type="password"] {
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+     -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+       -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+          transition: border linear 0.2s, box-shadow linear 0.2s;
+  background-color: #f1edea;
+  border: 0px solid #f1edea;
+  -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0);
+     -moz-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0);
+          box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0);
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+  border-color: ##f1edea;
+  outline: 0;
+  outline: thin dotted \9;
+  /* IE6-9 */
+  -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0), 0 0 0px rgba(0, 0, 0, 0);
+     -moz-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0), 0 0 0px rgba(0, 0, 0, 0);
+          box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0), 0 0 0px rgba(0, 0, 0, 0);
+
+}
+
+
+
+
+/* Navigation with Categories 
+--------------------------------------------------------*/
+.tres {
+  height: 60px;
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#2E1720), color-stop(100%,#552B3A));
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2E1720', endColorstr='#552B3A',GradientType=1 );
+  border-color: #E8DABD;
+  border-width: 1px 0px 1px 0px;
+  border-style: solid;
+  text-align: center;
+}
+
+.nav-pills {
+  display: block;
+  margin: auto;
+  width: 450px;
+  padding: 0px 0px 5px 9px;
+  margin-top: 11px;
+} 
+
+.nav-pills > .active > a, .nav-pills > .active > a:hover {
+  color: #472431;
+  background-color: #E8DABD;
+}
+
+.nav-tabs > li > a, .nav-pills > li > a {
+  margin-right: 7px;
+}
+
+.nav-pills a:hover {
+  color: #472431;
+  background-color: #FF00FF;
+}
+
+
+/* Thumbnails images
+--------------------------------------------------------*/
+.thumbnail {
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#2E1720), color-stop(100%,#552B3A));
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2E1720', endColorstr='#552B3A',GradientType=1 );
+  border: 0px;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.thumbnail h3 {
+  color: #DD577A;
+  font-size: 22px;
+  line-height: 1em;
+  margin-bottom: 2px;
+}
+
+.thumbnail p > strong {
+  font-size: 16px;
+}
+
+.thumbnail img {
+  height: 240px;
+  width: 100%;
+}
+
+.thumbnail p {
+  color: #FFF0CF;
+  max-height: 138px;
+  overflow: hidden;
+}
+
+.caption .btn {
+  margin-top: 0px;
+  margin-left: 170px;
+}
+
+
+
+/* Pagination
+--------------------------------------------------------*/
+.pagination .active a, .pagination .active span {
+  color: #532B3A;
+  cursor: default;
+  background: #FBF6ED;
+}
+
+.pagination ul {
+  background: #EEEAE5;
+}
+
+
+
+
+/* Categories
+--------------------------------------------------------*/
+.categories {
+  padding: 40px 60px;
+  height: 290px;
+  margin-top: 50px;
+}
+
+.unstyled h2, .unstyled a {
+  font-size: 21px;
+  line-height: 1.2em;
+  color: #D3597B;
+}
+
+.unstyled {
+  margin-top: 10px;
+}
+
+
+
+
+/* Categories
+--------------------------------------------------------*/
+.quatro {
+  height: 100px;
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#2E1720), color-stop(100%,#552B3A));
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2E1720', endColorstr='#552B3A',GradientType=1 );
+  text-align: center;
+}
