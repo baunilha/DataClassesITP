@@ -1,86 +1,31 @@
-{% extends "/layout.html" %}
+{% from "_form_helpers.html" import render_error, render_textarea %}
+{% extends "layout.html" %}
 
-{% block styles %}{% endblock %}
 
 {% block body %}
 
-<!-- Invitation to action -->
-    <div class="row-fluid">
-      <div class="span12">
-        <div class="hero-unit">
-          <h1>Share your books!</h1>
-          <p>'Something Borrowed' is database of useful things that you would lend to other ITPers. Right now you can lend and borrow books from our ITP community. Stay tuned... Other improvements and items are coming soon!</p>
-          <p><a class="btn btn-info btn-large" href="/submit">Add a book &raquo;</a></p>
-        </div>
-      </div>
-    </div>
 
+<div class="row">
 
-    <!-- Search Bar -->
-    <div class="row-fluid">
-        <div class="span12 dois" style="position: static; top: 0px; ">
-            <div class="content-container">
-                <form class="navbar-search"><img src="{{ url_for('static', filename='img/search-icon.png') }}" alt="" height="40px" width="40px"><input type="text" class="search-query" placeholder="Search ITP's cabinet here"></form>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Navigation Area -->
-    <div class="row-fluid">
-        <div class="span12 tres">
-                <ul class="nav nav-pills">
-                  <li class="active"><a href="#"><span class="icon_nav"></span>Everything</a></li>
-                  <li class=""><a href="#"><span class="icon_nav"></span>Eletronics</a></li>
-                  <li class=""><a href="#"><span class="icon_nav"></span>Materials</a></li>
-                  <li class=""><a href="#"><span class="icon_nav"></span>Movies</a></li>
-                  <li class=""><a href="#"><span class="icon_nav"></span>Books</a></li>
-                </ul>  
-        </div>
-    </div>
-
-
-      <!-- Thumbnails -->
-    <div class="container middle">
-      	<div class="row-fluid">
-            <ul class="thumbnails">
-              
-					{% for book in books %}
-          <li class="span3">
-              <div class="thumbnail">
-                <div class="caption">
-        					<img class="img-thumbnail" src="http://placehold.it/300x200" alt="">
-    
-                    <h3>{{ book.title }}</h3>
-                    <p><em>[{% for b in book.bookType %}{{ b }}{% endfor %}, by {{ book.author }}]
-                    </em></p>
-                    <p><em>"{{ book.description }}"</em></p>
-                    <a href="/books/{{ book.slug }}" class="btn btn-info">Borrow</a>
-                </div>
-              </div>
-          </li>  
-					{% endfor %}
-
-            </ul>
-        </div>
-    </div>
-
-          <!-- Pagination -->
-      <div class="container">
-          <div class="pagination pagination-centered">
-            <ul>
-              <li class="disabled"><a href="#">Prev</a></li>
-              <li class="disabled"><a href="#">1</a></li>
-              <li class="active"><a href="#">2</a></li>
-              <li class="active"><a href="#">3</a></li>
-              <li class="active"><a href="#">4</a></li>
-              <li class="active"><a href="#">5</a></li>
-              <li class="active"><a href="#">Next</a></li>
-            </ul>
-          </div>
-      </div>    
+	<!-- left column -->
+	<div class="span6">
+		<h3>Classes</h3>
+		
+		{% for course in courses %}
+			<h4><a href="/courses/{{ course.slug }}">{{ course.title }}</a></h4>
+			<p>by {{ course.instructor }}</p>
+			<p>
+			{% for cat in course.categories %}
+				<span class="label label-inverse"><a href="/category/{{ cat }}">{{ cat|replace("_"," ")}}</a></span>
+			{% endfor %}
+			<hr/>
+		{% endfor %}
+		
+	</div>
+</div>
 
 {% endblock %}
 
 
+{% block styles %}{% endblock %}
 {% block scripts %}{% endblock %}

@@ -5,23 +5,28 @@ from flask.ext.mongoengine.wtf import model_form
 from datetime import datetime
 
 
-class Book(Document):
-    title = StringField(required=True, max_length=120, verbose_name="title")
-    slug = StringField()
-    author = StringField(required=True, max_length=120, verbose_name="author")
-    image = StringField(max_length=50)
+class Comment(EmbeddedDocument):
+	name = StringField(required=False)
+	comment = StringField()
+	timestamp = DateTimeField(default=datetime.now())
 
-    # Book type and genre are lists of Strings
-    bookType = ListField(StringField(max_length=30))
-    genre = ListField(StringField(max_length=30))
+class Course(Document):
 
-    description = StringField(max_length=500)
-    owner = StringField(required=True, max_length=200, verbose_name="owner")
+	title = StringField(max_length=120, required=True, verbose_name="Class name")
+	description = StringField()
+	slug = StringField()
+	instructor = StringField(required=True)
+	semester = StringField()
+	year = StringField()
+	categories = ListField( StringField() )
+	units = IntField()
+	# rating
 
-    # Email is another different field
-    email = EmailField(required=True, max_length=100, verbose_name="email")
+	# Comments is a list of Document type 'Comments' defined above
+	comments = ListField( EmbeddedDocumentField(Comment) )
 
-    # itpStatus is a list of Strings
-    itpStatus = ListField(StringField(max_length=30))
 
-BookForm = model_form(Book)
+CourseForm = model_form(Course)
+
+	
+

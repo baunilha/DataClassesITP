@@ -23,99 +23,115 @@ app.logger.debug("Connecting to MongoLabs")
 
 
 # Create the lists that match the name of the ListField in the models.py
-bookType = ['Paperback','Hardcover','PDF','Kindle']
-genre = ['Fiction', 'Programming', 'Physical Computing', 'ITP Essentials', 'Design', 'Art']
-itpStatus = ['Current Student', 'ITP Alumni', 'Faculty', 'Resident', 'ITP Adjunct']
-
+categories = ['web','physical computing','programming','video','music','installation','social media','developing nations','business','networks', 'fabrication', 'theory', 'art']
 
 # --------- Routes ----------
 
+@app.route("/form")
+def form():
+	return render_template('form.html')
 
 # this is our main page
 @app.route("/")
 def index():
-	# render the template, retrieve 'books' from the database
-	return render_template("main.html", books=models.Book.objects())
+	# render the template, retrieve 'course' from the database
+	return render_template("main.html", course=models.Course.objects())
 
-
-@app.route("/submit", methods=['GET','POST'])
+# this is our main page
+@app.route("/submit.html", methods=['GET','POST'])
 def submit():
 
-	app.logger.debug(request.form.getlist('bookType'))
-	app.logger.debug(request.form.getlist('genre'))
-	app.logger.debug(request.form.getlist('itpStatus'))
+	app.logger.debug(request.form.getlist('categories'))
 
-	# get new books items form from models.py
-	book_form = models.BookForm(request.form)
+	# get Idea form from models.py
+	course_form = models.CourseForm(request.form)
 	
-	if request.method == "POST" and book_form.validate():
+	if request.method == "POST" and course_form.validate():
 	
-		# get form data - create new book
-		book = models.Book()
+	# get form data - create new idea
+		course = models.Course()
 		
-		book.title = request.form.get('title','no title')
-		book.slug = slugify(book.title)
-		book.author = request.form.get('author','anonymous')
-		book.bookType = request.form.getlist('bookType')
-		book.genre = request.form.getlist('genre')
-		book.description = request.form.get('description','')
-		
-		book.owner = request.form.get('owner')
-		book.email = request.form.get('email')
-		book.itpStatus = request.form.getlist('itpStatus')
-		
-		book.save()
+		course.title = request.form.get('title')
+		course.slug = slugify(course.title)
+		course.description = request.form.get('description','')
+		course.instructor = request.form.get('instructor')
+		course.semester = request.form.get('semester')
+		course.year = request.form.get('year')
+		course.categories = request.form.getlist('categories')
+		course.units = request.form.get('units')
+	
+		course.save()
 
-		return redirect('/books/%s' % book.slug)
+		return redirect('/courses/%s' % course.slug)
 
 	else:
 
-		# for form management, checkboxes are weird (in wtforms)
-		# prepare checklist items for form
-		# you'll need to take the form checkboxes submitted
-		# and book_form.bookType, book_form.genre and book_form.itpStatus list needs to be populated.
-		if request.form.getlist('bookType'):
-			for b in request.form.getlist('bookType'):
-				idea_form.bookType.append_entry(b)
+		if request.form.getlist('categories'):
+			for c in request.form.getlist('categories'):
+				course_form.categories.append_entry(c)
 
-		if request.form.getlist('genre'):
-			for g in request.form.getlist('genre'):
-				idea_form.genre.append_entry(g)
-
-		if request.form.getlist('itpStatus'):
-			for i in request.form.getlist('itpStatus'):
-				idea_form.itpStatus.append_entry(i)
-
-		# render the template
 		templateData = {
-			'books' : models.Book.objects(),
-			'bookType' : bookType,
-			'genre' : genre,
-			'itpStatus' : itpStatus,
-			'form' : book_form
+			'courses' : models.Course.objects(),
+			'categories' : categories,
+			'form' : course_form
 		}
 
 		return render_template("submit.html", **templateData)
 
 
-# pages inside a category
-@app.route("/books/<book_slug>")
-def book_display(book_slug):
-	
-	# get book by book_slug
+
+# pages of the courses
+@app.route("/courses/<course_slug>")
+def course_display(course_slug):
+
+	# get idea by idea_slug
 	try:
-		book = models.Book.objects.get(slug=book_slug)
+		course = models.Course.objects.get(slug=course_slug)
 	except:
 		abort(404)
 
 	# prepare template data
 	templateData = {
-		'book' : book
+		'course' : course
 	}
 
 	# render and return the template
-	return render_template('book_entry.html', **templateData)
+	return render_template('idea_entry.html', **templateData)
+	
 
+
+
+@app.route("/courses/<course_id>/comment", methods=['POST'])
+def course_comment(course_id):
+
+	name = request.form.get('name')
+	comment = request.form.get('comment')
+
+	if name == '' or comment == '':
+		# no name or comment, return to page
+		return redirect(request.referrer)
+
+
+	#get the course by id
+	try:
+		course = models.Course.objects.get(id=course_id)
+	except:
+		# error, return to where you came from
+		return redirect(request.referrer)
+
+
+	# create comment
+	comment = models.Comment()
+	comment.name = request.form.get('name')
+	comment.comment = request.form.get('comment')
+	
+	# append comment to course
+	course.comments.append(comment)
+
+	# save it
+	course.save()
+
+	return redirect('/course/%s' % course.slug)
 
 
 @app.errorhandler(404)
