@@ -17,10 +17,10 @@ class Course(Document):
 	description = StringField()
 	slug = StringField()
 	instructor = StringField(required=True)
-	semester = StringField()
+	semester = StringField(choices = (('spring','Spring'),('fall','Fall')) )
 	year = StringField()
 	categories = ListField( StringField() )
-	units = IntField()
+	units = IntField(choices = (('2','2'),('4','4')))
 	# rating
 
 	# Comments is a list of Document type 'Comments' defined above

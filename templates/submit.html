@@ -56,9 +56,8 @@
 
                 <hr>
                 <p>
-                <label for="semester">Semester</label>
-                {{ form.semester(class='myTextboxCssClass', type='textarea') }}
-                {{ render_error(form.semester) }}  {# render_error inside _form_helpers.html #}
+                <label class="dropdown">Semester</label>
+                    {{form.semester}}
                 </p>
 
                 <p>
@@ -74,7 +73,7 @@
                 <hr>
                 <p>
                 <label for="units">Units</label>
-                {{ form.units(class='myTextboxCssClass', type='textarea') }}
+                {{ form.units }}
                 {{ render_error(form.units) }}  {# render_error inside _form_helpers.html #}
                 </p>
 
