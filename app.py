@@ -27,10 +27,6 @@ categories = ['web','physical computing','programming','video','music','installa
 
 # --------- Routes ----------
 
-@app.route("/form")
-def form():
-	return render_template('form.html')
-
 # this is our main page
 @app.route("/")
 def index():
@@ -38,7 +34,7 @@ def index():
 	return render_template("main.html", course=models.Course.objects())
 
 # this is our main page
-@app.route("/submit.html", methods=['GET','POST'])
+@app.route("/submit", methods=['GET','POST'])
 def submit():
 
 	app.logger.debug(request.form.getlist('categories'))
