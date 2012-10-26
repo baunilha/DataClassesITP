@@ -18,7 +18,7 @@
 			{% for cat in course.categories %}
 				<span class="label label-inverse"><a href="/category/{{ cat }}">{{ cat|replace("_"," ")}}</a></span>
 			{% endfor %}
-			<p><h1>"</h1>{{ course.description }}</p>
+			<p>{{ course.description }}</p>
 			<hr/>
 		{% endfor %}
 		
