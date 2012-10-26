@@ -26,6 +26,8 @@ a {
 .comment3 {
   color: #F18D05;
   font-size: 20px;
+  height: auto;
+  width: auto;
 }
 
 li {
