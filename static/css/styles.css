@@ -37,3 +37,10 @@ label {
   color: #DEE5DE;
   font-size: 16px;
 }
+
+.label2 {
+  padding: 10px 20px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}

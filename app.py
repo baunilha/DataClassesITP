@@ -56,6 +56,7 @@ def submit():
 	if request.method == "POST" and course_form.validate():
 	
 		now = datetime.datetime.now()
+
 	# get form data - create new course
 		course = models.Course()
 		
@@ -139,10 +140,9 @@ def by_category(cat_name):
 @app.route("/courses/<course_id>/comment", methods=['POST'])
 def course_comment(course_id):
 
-	name = request.form.get('name')
 	comment = request.form.get('comment')
 
-	if name == '' or comment == '':
+	if comment == '':
 		# no name or comment, return to page
 		return redirect(request.referrer)
 
@@ -157,7 +157,6 @@ def course_comment(course_id):
 
 	# create comment
 	comment = models.Comment()
-	comment.name = request.form.get('name')
 	comment.comment = request.form.get('comment')
 	
 	# append comment to course

@@ -10,24 +10,29 @@
 	<!-- left column -->
 	<div class="span12">
 		<br/>
+		<br/>
 		<h2>Class: {{ course.title }}</h2>
-		<p>by {{ course.instructor }}</p>
+		<p>by {{ course.instructor }} ( {{ course.units }} credits course )</p>
 		<hr>
 		<br/>
 		<p>{{ course.description }}</p>
 		<br/>
-		<h3>Categories:</h3>
-			<ul>
-			{% for c in course.categories %}
-			<li>{{ c|replace("_"," ") }}</li>
-			{% endfor %}
-			</ul>
 
-		<br/>	
-		<p>Added: {{ course.timestamp }} | id: {{ course.id }}</p>
 		<br/>
+
+		<h4>|| {{ course.semester }} semester, {{ course.year }}</h4>
+		<br/>
+
+		<h3>Categories:</h3>
+			<br/>
+			<p>{% for cat in course.categories %}
+				<span class="label2 label-inverse"><a href="/category/{{ cat }}">{{ cat|replace("_"," ")}}</a></span>
+			{% endfor %}</p>
+		<br/>
+
 		<hr>
 
+		<br/>
 		<h3>Comments ( {{ course.comments|length }} )</h3>
 		<div class="row">
 

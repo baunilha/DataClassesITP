@@ -17,10 +17,9 @@
 		{% for course in courses %}
 			<h3><a href="/courses/{{ course.slug }}">{{ course.title }}</a></h3>
 			<p>by {{ course.instructor }}</p>
-			<p>
-			{% for cat in course.categories %}
+			<p>{% for cat in course.categories %}
 				<span class="label label-inverse"><a href="/category/{{ cat }}">{{ cat|replace("_"," ")}}</a></span>
-			{% endfor %}
+			{% endfor %}</p>
 			<p>{{ course.description }}</p>
 			<hr/>
 		{% endfor %}
