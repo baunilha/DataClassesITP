@@ -33,16 +33,19 @@ li {
   color: #4CC4D4;
 }
 
-.label2 {
-  padding: 10px 20px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-}
-
 label {
   color: #DEE5DE;
   font-size: 16px;
 }
+
+.label-new {
+  padding: 10px 20px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+
 
 
