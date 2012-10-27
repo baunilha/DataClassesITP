@@ -26,7 +26,7 @@
 		<h3>Categories:</h3>
 			<br/>
 			<p>{% for cat in course.categories %}
-				<span class="label-new label-inverse"><a href="/category/{{ cat }}">{{ cat|replace("_"," ")}}</a></span>
+				<span class="label-new"><a href="/category/{{ cat }}">{{ cat|replace("_"," ")}}</a></span>
 			{% endfor %}</p>
 		<br/>
 
