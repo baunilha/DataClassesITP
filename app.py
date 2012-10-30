@@ -93,24 +93,11 @@ def submit():
 @app.route("/courses/<course_slug>")
 def course_display(course_slug):
 
-	app.logger.debug(request.form.get('comment'))
-
-
-	course = models.Course.objects.get(slug=course_slug)
-	course_form = models.CourseForm(request.form)
-	
-	if request.method == "POST" and course_form.validate():
-	
-		now = datetime.datetime.now()
-
-	# get form data - create new course
-		comment = models.Comment()
-		comment.comment = request.form.get('comment')
-		comment.timestamp = now
-		comment.save()
-
-		course.comments.append( comment )
-		course.save()
+	# get idea by idea_slug
+	try:
+		course = models.Course.objects.get(slug=course_slug)
+	except:
+		abort(404)
 
 	# prepare template data
 	templateData = {
