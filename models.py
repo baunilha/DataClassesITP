@@ -20,7 +20,7 @@ class Course(Document):
 	semester = StringField(choices = (('spring','Spring'),('fall','Fall')) )
 	year = StringField()
 	categories = ListField( StringField() )
-	units = StringField(choices = ( ('2','2'), ('4','4') ), required=False )
+	units = StringField(choices = ['2','4'])
 	# rating
 
 	# Comments is a list of Document type 'Comments' defined above
@@ -28,6 +28,4 @@ class Course(Document):
 
 
 CourseForm = model_form(Course)
-
-	
 
