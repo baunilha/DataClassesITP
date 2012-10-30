@@ -21,7 +21,6 @@ class Course(Document):
 	year = StringField()
 	categories = ListField( StringField() )
 	units = StringField(choices = ['2','4'])
-	# rating
 
 	# Comments is a list of Document type 'Comments' defined above
 	comments = ListField( EmbeddedDocumentField( Comment ) )
