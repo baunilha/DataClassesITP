@@ -67,7 +67,7 @@ def submit():
 		course.semester = request.form.get('semester')
 		course.year = request.form.get('year')
 		course.categories = request.form.getlist('categories')
-		course.units = request.form.get('units')
+		# course.units = request.form.get('units')
 	
 		course.save()
 
