@@ -11,7 +11,7 @@
 	<div class="span12">
 		<br/>
 		<br/>
-		<h2>Class: {{ course.title }}</h2>
+		<h1>{{ course.title }}</h1>
 		<p>by {{ course.instructor }}</p>
 		<hr>
 		<br/>
@@ -26,12 +26,13 @@
 		<h3>Categories:</h3>
 			<br/>
 			<p>{% for cat in course.categories %}
-				<span class="label label-inverse"><a href="/category/{{ cat }}">{{ cat|replace("_"," ")}}</a></span>
+				<span class="labelnew label-inverse"><a href="/category/{{ cat }}">{{ cat|replace("_"," ")}}</a></span>
 			{% endfor %}</p>
+		
 		<br/>
-
 		<hr>	
 		<br/>
+
 		<!-- ADD COMMENT -->
 			<div class="span12">
 				<h3> Add your class review: </h3>
@@ -57,7 +58,7 @@
 			</div>
 
 		<br/>
-		<hr>
+		<hr>	
 		<br/>
 		
 			<div class="span11">
@@ -73,8 +74,8 @@
 					<h4 class="comment3">Learned in class: </h4>
 					<p>{{ comment.learn }}</p>
 					<br>
-					<h4 class="comment3">Recommend the Class:</h4> 
-					<h5>{{ comment.recommendation }}</h5>
+					<h4 class="comment3">Recommend the Class: 
+					<span class="rec">{% filter upper %}{{ comment.recommendation }}{% endfilter %}</span></h4>
 					<br>
 					<p><small><em>--- Added: {{ comment.timestamp.strftime("%a %m/%d %I:%M%p ") }}</em></small></p>
 				</div>
