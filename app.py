@@ -28,8 +28,7 @@ app.logger.debug("Connecting to MongoLabs")
 
 
 # Create the lists that match the name of the ListField in the models.py
-categories = ['web','physical computing','programming','video','music','installation','social media','developing nations','business','networks', 'fabrication', 'theory', 'art', 'data', 'sound']
-
+categories = ['3D','Analog Craft','Animation','Art','Audio','Biology','Business','Computer Vision','Critique','Data','Children','Design','Developing Nations','Education','Environment','Exhibit','Fabrication','Foundation','Game','Installation','Internet','Journalism','Mobile','Music','Narrative','Networks','Performance','Physical Computing','Politics','Programming','Projection','Science','Social Media','Seminar','Sustainable','Teamwork','Video','Visualization','Wearable','Web']
 
 # --------- ROUTES ----------
 

@@ -23,6 +23,11 @@ a {
   color: #D0D102;
 }
 
+a:hover {
+  text-decoration: none;
+  color: #D70060;
+}
+
 .comment3 {
   color: #F18D05;
   font-size: 20px;
@@ -36,6 +41,11 @@ li {
 label {
   color: #DEE5DE;
   font-size: 16px;
+}
+
+.label {
+  padding: 4px 4px;
+  font-size: 13px;
 }
 
 .labelnew {
