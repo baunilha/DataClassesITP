@@ -43,14 +43,12 @@
 					<label for="learn"><h3 class="comment3">What did you learn in this class?<h3></label>
 					<textarea type="text" cols="60" rows="3" id="learn" name="learn" class="comment3"></textarea>
 
-					<h3 class="comment3">Do you recommend this class?</h3>
-					<label for="recommend" class="dropdown">
-						<select name="recommend">
-							{% for comment in course.comments %}
-							<option value="recommend">{{ comment.recommend }}</option>
-							{% endfor %}
-						</select>
-					</label>                   	
+					<label for="recommendation"><h3 class="comment3">Do you recommend this class?</h3></label>
+					  <select id="recommendation" name="recommendation">
+					    <option value="yes">Yes</option>
+					    <option value="no">No</option>
+					    <option value="maybe">Maybe</option>
+					  </select>                  	
 					
 					<label>
 					<button type="submit" class="btn btn-info">Comment</button>
@@ -61,32 +59,32 @@
 		<br/>
 		<hr>
 		<br/>
-
-		<h3>Comments ( {{ course.comments|length }} )</h3>
-		<div class="row">
-
+		
+			<div class="span11">
 			<!-- DISPLAY COMMENTS -->
-			<div class="span12">
+			<h3>Reviews by ITPers ( {{ course.comments|length }} ):</h3>
 				{% for comment in course.comments %}
 				<div class="comment">
-					<span class="commenter">About the class and instructor: 
+					<span class="commenter">
+						<h3 class="review_count">Review {{ course.comments|count }}:</h3>
+						<h4 class="comment3">|| About the class and instructor:</h4> 
 						<p> {{ comment.like }} </p> </span>
 					<br>
-					<p>Learned in class: </p>
+					<h4 class="comment3">Learned in class: </h4>
 					<p>{{ comment.learn }}</p>
 					<br>
-					<p>Recommend the Class: {{ comment.recommend }}</p>
-					<p><small>{{ comment.timestamp.strftime("%a %m/%d %I:%M%p ") }}</small></p>
+					<h4 class="comment3">Recommend the Class:</h4> 
+					<h5>{{ comment.recommendation }}</h5>
+					<br>
+					<p><small><em>--- Added: {{ comment.timestamp.strftime("%a %m/%d %I:%M%p ") }}</em></small></p>
 				</div>
 				<hr>
 				{% endfor %}
-			</div>
 
-			
 		</div>
 		
 
-	</div>x	
+	</div>
 
 </div>
 
