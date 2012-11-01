@@ -46,6 +46,7 @@ label {
 .label {
   padding: 4px 4px;
   font-size: 13px;
+  line-height: 30px;
 }
 
 .labelnew {
