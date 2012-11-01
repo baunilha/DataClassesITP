@@ -30,9 +30,38 @@
 			{% endfor %}</p>
 		<br/>
 
-		<hr>
+		<hr>	
+		<br/>
+		<!-- ADD COMMENT -->
+			<div class="span12">
+				<h3> Add your class review: </h3>
+				<form method="POST" action="/courses/{{ course.id }}/comment">
+					
+					<label for="like"><h3 class="comment3">What did you like/dislike about this class/instructor?<h3></label>
+					<textarea type="text" cols="100" rows="5" id="like" name="like" class="comment3"></textarea>
+
+					<label for="learn"><h3 class="comment3">What did you learn in this class?<h3></label>
+					<textarea type="text" cols="60" rows="3" id="learn" name="learn" class="comment3"></textarea>
+
+					<h3 class="comment3">Do you recommend this class?</h3>
+					<label for="recommend" class="dropdown">
+						<select name="recommend">
+							{% for comment in course.comments %}
+							<option value="recommend">{{ comment.recommend }}</option>
+							{% endfor %}
+						</select>
+					</label>                   	
+					
+					<label>
+					<button type="submit" class="btn btn-info">Comment</button>
+					</label>
+				</form>
+			</div>
 
 		<br/>
+		<hr>
+		<br/>
+
 		<h3>Comments ( {{ course.comments|length }} )</h3>
 		<div class="row">
 
@@ -40,26 +69,20 @@
 			<div class="span12">
 				{% for comment in course.comments %}
 				<div class="comment">
-					<span class="commenter">{{ comment.name }} said,</span><br>
-					<p>{{ comment.comment }}</p>
+					<span class="commenter">About the class and instructor: 
+						<p> {{ comment.like }} </p> </span>
+					<br>
+					<p>Learned in class: </p>
+					<p>{{ comment.learn }}</p>
+					<br>
+					<p>Recommend the Class: {{ comment.recommend }}</p>
 					<p><small>{{ comment.timestamp.strftime("%a %m/%d %I:%M%p ") }}</small></p>
 				</div>
 				<hr>
 				{% endfor %}
 			</div>
 
-			<!-- ADD COMMENT -->
-			<div class="span12">
-				<form method="POST" action="/courses/{{ course.id }}/comment">
-					
-					<label for="comment"><h3 class="comment3">Comment<h3></label>
-					<textarea type="text" cols="120" rows="7" id="comment" name="comment" class="comment3"></textarea>
-					
-					<label>
-					<button type="submit" class="btn btn-info">Comment</button>
-					</label>
-				</form>
-			</div>
+			
 		</div>
 		
 

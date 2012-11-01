@@ -31,8 +31,6 @@ app.logger.debug("Connecting to MongoLabs")
 categories = ['web','physical computing','programming','video','music','installation','social media','developing nations','business','networks', 'fabrication', 'theory', 'art', 'data', 'sound']
 
 
-
-
 # --------- ROUTES ----------
 
 
@@ -140,9 +138,11 @@ def by_category(cat_name):
 @app.route("/courses/<course_id>/comment", methods=['POST'])
 def course_comment(course_id):
 
-	comment = request.form.get('comment')
+	like = request.form.get('like')
+	learn = request.form.get('learn')
+	recommend = request.form.get('recommend')
 
-	if comment == '':
+	if like == '' or learn == '' or recommend == '':
 		# no name or comment, return to page
 		return redirect(request.referrer)
 
@@ -157,7 +157,9 @@ def course_comment(course_id):
 
 	# create comment
 	comment = models.Comment()
-	comment.comment = request.form.get('comment')
+	comment.like = request.form.get('like')
+	comment.learn = request.form.get('learn')
+	comment.recommend = request.form.get('recommend')
 	
 	# append comment to course
 	course.comments.append(comment)

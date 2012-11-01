@@ -6,8 +6,9 @@ from datetime import datetime
 
 
 class Comment(EmbeddedDocument):
-	name = StringField(required=False)
-	comment = StringField()
+	like = StringField(required=False)
+	learn = StringField(required=False)
+	recommend = StringField(choices = (('yes','Yes'),('no','No'),('maybe','Maybe')) )
 	rating = IntField()
 	timestamp = DateTimeField(default=datetime.now())
 
