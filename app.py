@@ -67,7 +67,7 @@ def submit():
 		course.semester = request.form.get('semester')
 		course.year = request.form.get('year')
 		course.categories = request.form.getlist('categories')
-		course.units = request.form.get('units')
+		# course.units = request.form.get('units')
 	
 		course.save()
 
@@ -92,7 +92,6 @@ def submit():
 # COURSES PAGE
 @app.route("/courses/<course_slug>")
 def course_display(course_slug):
-
 
 	# get idea by idea_slug
 	try:
