@@ -28,10 +28,7 @@ app.logger.debug("Connecting to MongoLabs")
 
 
 # Create the lists that match the name of the ListField in the models.py
-categories = ['web','physical computing','programming','video','music','installation','social media','developing nations','business','networks', 'fabrication', 'theory', 'art', 'data', 'sound']
-
-
-
+categories = ['3D','Analog Craft','Animation','Art','Audio','Biology','Business','Computer Vision','Critique','Data','Children','Design','Developing Nations','Education','Environment','Exhibit','Fabrication','Foundation','Game','Installation','Internet','Journalism','Mobile','Music','Narrative','Networks','Performance','Physical Computing','Politics','Programming','Projection','Science','Social Media','Seminar','Sustainable','Teamwork','Video','Visualization','Wearable','Web']
 
 # --------- ROUTES ----------
 
@@ -141,9 +138,11 @@ def by_category(cat_name):
 @app.route("/courses/<course_id>/comment", methods=['POST'])
 def course_comment(course_id):
 
-	comment = request.form.get('comment')
+	like = request.form.get('like')
+	learn = request.form.get('learn')
+	recommendation = request.form.get('recommendation')
 
-	if comment == '':
+	if like == '' or learn == '' or recommendation == '':
 		# no name or comment, return to page
 		return redirect(request.referrer)
 
@@ -158,7 +157,9 @@ def course_comment(course_id):
 
 	# create comment
 	comment = models.Comment()
-	comment.comment = request.form.get('comment')
+	comment.like = request.form.get('like')
+	comment.learn = request.form.get('learn')
+	comment.recommendation = request.form.get('recommendation')
 	
 	# append comment to course
 	course.comments.append(comment)

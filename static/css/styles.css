@@ -23,6 +23,11 @@ a {
   color: #D0D102;
 }
 
+a:hover {
+  text-decoration: none;
+  color: #D70060;
+}
+
 .comment3 {
   color: #F18D05;
   font-size: 20px;
@@ -38,14 +43,38 @@ label {
   font-size: 16px;
 }
 
+.label {
+  padding: 4px 4px;
+  font-size: 13px;
+  line-height: 30px;
+}
+
 .labelnew {
   padding: 10px 20px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-  font-size: 16px;
+  font-size: 20px;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #565D5E;
+  font-weight: bold;
+  line-height: 50px;
+  color: white;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  white-space: nowrap;
+  vertical-align: baseline;
+}
+
+.review_count {
+  color: #D70060;
+}
+
+.rec {
+  color: #4CC4D4;
+}
+
+.right {
+  margin: 10px;
 }
 
 

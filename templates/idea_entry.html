@@ -11,7 +11,7 @@
 	<div class="span12">
 		<br/>
 		<br/>
-		<h2>Class: {{ course.title }}</h2>
+		<h1>{{ course.title }}</h1>
 		<p>by {{ course.instructor }}</p>
 		<hr>
 		<br/>
@@ -26,44 +26,66 @@
 		<h3>Categories:</h3>
 			<br/>
 			<p>{% for cat in course.categories %}
-				<span class="label label-inverse"><a href="/category/{{ cat }}">{{ cat|replace("_"," ")}}</a></span>
+				<span class="labelnew label-inverse"><a href="/category/{{ cat }}">{{ cat|replace("_"," ")}}</a></span>
 			{% endfor %}</p>
+		
+		<br/>
+		<hr>	
 		<br/>
 
-		<hr>
-
-		<br/>
-		<h3>Comments ( {{ course.comments|length }} )</h3>
-		<div class="row">
-
-			<!-- DISPLAY COMMENTS -->
+		<!-- ADD COMMENT -->
 			<div class="span12">
-				{% for comment in course.comments %}
-				<div class="comment">
-					<span class="commenter">{{ comment.name }} said,</span><br>
-					<p>{{ comment.comment }}</p>
-					<p><small>{{ comment.timestamp.strftime("%a %m/%d %I:%M%p ") }}</small></p>
-				</div>
-				<hr>
-				{% endfor %}
-			</div>
-
-			<!-- ADD COMMENT -->
-			<div class="span12">
+				<h3> Add your class review: </h3>
 				<form method="POST" action="/courses/{{ course.id }}/comment">
 					
-					<label for="comment"><h3 class="comment3">Comment<h3></label>
-					<textarea type="text" cols="120" rows="7" id="comment" name="comment" class="comment3"></textarea>
+					<label for="like"><h3 class="comment3">What did you like/dislike about this class/instructor?<h3></label>
+					<textarea type="text" cols="100" rows="5" id="like" name="like" class="comment3"></textarea>
+
+					<label for="learn"><h3 class="comment3">What did you learn in this class?<h3></label>
+					<textarea type="text" cols="60" rows="3" id="learn" name="learn" class="comment3"></textarea>
+
+					<label for="recommendation"><h3 class="comment3">Do you recommend this class?</h3></label>
+					  <select id="recommendation" name="recommendation">
+					    <option value="yes">Yes</option>
+					    <option value="no">No</option>
+					    <option value="maybe">Maybe</option>
+					  </select>                  	
 					
 					<label>
 					<button type="submit" class="btn btn-info">Comment</button>
 					</label>
 				</form>
 			</div>
+
+		<br/>
+		<hr>	
+		<br/>
+		
+			<div class="span11">
+			<!-- DISPLAY COMMENTS -->
+			<h3>Reviews by ITPers ( {{ course.comments|length }} ):</h3>
+				{% for comment in course.comments %}
+				<div class="comment">
+					<span class="commenter">
+						<h3 class="review_count">Review {{ course.comments|count }}:</h3>
+						<h4 class="comment3">|| About the class and instructor:</h4> 
+						<p> {{ comment.like }} </p> </span>
+					<br>
+					<h4 class="comment3">Learned in class: </h4>
+					<p>{{ comment.learn }}</p>
+					<br>
+					<h4 class="comment3">Recommend the Class: 
+					<span class="rec">{% filter upper %}{{ comment.recommendation }}{% endfilter %}</span></h4>
+					<br>
+					<p><small><em>--- Added: {{ comment.timestamp.strftime("%a %m/%d %I:%M%p ") }}</em></small></p>
+				</div>
+				<hr>
+				{% endfor %}
+
 		</div>
 		
 
-	</div>x	
+	</div>
 
 </div>
 
