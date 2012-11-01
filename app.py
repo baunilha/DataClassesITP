@@ -140,9 +140,9 @@ def course_comment(course_id):
 
 	like = request.form.get('like')
 	learn = request.form.get('learn')
-	recommend = request.form.get('recommend')
+	recommendation = request.form.get('recommendation')
 
-	if like == '' or learn == '' or recommend == '':
+	if like == '' or learn == '' or recommendation == '':
 		# no name or comment, return to page
 		return redirect(request.referrer)
 
@@ -159,7 +159,7 @@ def course_comment(course_id):
 	comment = models.Comment()
 	comment.like = request.form.get('like')
 	comment.learn = request.form.get('learn')
-	comment.recommend = request.form.get('recommend')
+	comment.recommendation = request.form.get('recommendation')
 	
 	# append comment to course
 	course.comments.append(comment)
