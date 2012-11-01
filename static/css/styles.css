@@ -57,7 +57,7 @@ label {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #565D5E;
   font-weight: bold;
-  line-height: 14px;
+  line-height: 50px;
   color: white;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   white-space: nowrap;
@@ -70,6 +70,10 @@ label {
 
 .rec {
   color: #4CC4D4;
+}
+
+.right {
+  margin: 10px;
 }
 
 
