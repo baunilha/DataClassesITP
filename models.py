@@ -25,7 +25,7 @@ class Course(Document):
 
 	# Comments is a list of Document type 'Comments' defined above
 	comments = ListField( EmbeddedDocumentField( Comment ) )
-
-
+	
 CourseForm = model_form(Course)
+
 

@@ -39,7 +39,29 @@ def index():
 	# render the template, retrieve 'courses' from the database
 	return render_template("main.html", courses=models.Course.objects())
 
+@app.route("/filter", methods=['POST'])
+def filter():
 
+	filtered_courses = []
+	filter_str = request.form.get('filter')
+	both = filter_str.split(",")
+	app.logger.debug(filter_str)
+	semester = both[0]
+	app.logger.debug(semester)
+	year = both[1]
+	app.logger.debug(year)
+
+	all_courses = models.Course.objects()
+	for c in all_courses:
+		if c.semester.lower() == semester.lower() and c.year == year:
+			filtered_courses.append(c)
+
+	templateData = {
+		'courses' : filtered_courses,
+		'semester' : [semester, year]
+	}
+
+	return render_template("main.html", **templateData)
 
 # this is our SUBMIT COURSES PAGE
 @app.route("/submit", methods=['GET','POST'])
