@@ -83,9 +83,9 @@ def submit():
 		course.title = request.form.get('title')
 		course.description = request.form.get('description','')
 		course.instructor = request.form.get('instructor')
-		course.slug = slugify(course.title + "-" + course.instructor + "-" + course.semester + "-" + course.year)
 		course.semester = request.form.get('semester')
 		course.year = request.form.get('year')
+		course.slug = slugify(course.title + "-" + course.instructor + "-" + course.semester + "-" + course.year)
 		course.categories = request.form.getlist('categories')
 		# course.units = request.form.get('units')
 	
