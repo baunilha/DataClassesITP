@@ -7,8 +7,28 @@ body {
   font-size: 16px;
 }
 
+.pageheader {
+  margin: 40px 0px;
+}
+
 p {
   color: #DEE5DE;
+  text-align:justify;
+}
+
+.site_description{
+  color: #F18D05;
+  font-size: 21px;
+  line-height: 25px;
+  text-align: justify;
+  margin-top: 10px;
+  margin-bottom: -10px;
+  font-weight: normal;
+}
+
+.search_by {
+  line-height: 18px;
+  margin: 8px 0 0 50px;
 }
 
 .label-inverse, .badge-inverse {
