@@ -49,11 +49,8 @@ def filter():
 	filtered_courses = []
 	filter_str = request.form.get('filter')
 	both = filter_str.split(",")
-	app.logger.debug(filter_str)
 	semester = both[0]
-	app.logger.debug(semester)
 	year = both[1]
-	app.logger.debug(year)
 
 	all_courses = models.Course.objects()
 	for c in all_courses:
