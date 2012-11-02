@@ -37,6 +37,7 @@ categories = ['3D','Analog Craft','Animation','Art','Audio','Biology','Business'
 @app.route("/")
 def index():
 	# render the template, retrieve 'courses' from the database
+	semester = ["Fall", "2012"]
 	return render_template("main.html", courses=models.Course.objects())
 
 @app.route("/filter", methods=['POST'])
