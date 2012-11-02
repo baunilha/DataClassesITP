@@ -41,7 +41,7 @@ def index():
 		'courses'  : models.Course.objects(),
 		'semester' : ["Fall", "2012"]
 	}
-	return render_template("main.html", courses=models.Course.objects())
+	return render_template("main.html", **templateData)
 
 @app.route("/filter", methods=['POST'])
 def filter():
