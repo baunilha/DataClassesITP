@@ -87,7 +87,6 @@ def submit():
 		course.semester = request.form.get('semester')
 		course.year = request.form.get('year')
 		course.categories = request.form.getlist('categories')
-		# course.units = request.form.get('units')
 	
 		course.save()
 
@@ -164,15 +163,18 @@ def course_comment(course_id):
 	like = request.form.get('like')
 	learn = request.form.get('learn')
 	recommendation = request.form.get('recommendation')
+	tags = request.form.get('tags')
+	app.logger.debug(tags) #works here
 
-	if like == '' or learn == '' or recommendation == '':
+	if like == '' or learn == '' or recommendation == '' or tags== '':
 		# no name or comment, return to page
 		return redirect(request.referrer)
 
 
 	#get the course by id
 	try:
-		course = models.Course.objects.get(id=course_id)
+		course = models.Course.objects.get(id=course_id)			
+
 	except:
 		# error, return to where you came from
 		return redirect(request.referrer)
@@ -186,6 +188,12 @@ def course_comment(course_id):
 	
 	# append comment to course
 	course.comments.append(comment)
+
+	# add tags
+	tags = ""
+	tags = request.form.get('tags')
+	app.logger.debug(tags) #doesn't work here
+	courses.tags.append(tags) #not working
 
 	# save it
 	course.save()

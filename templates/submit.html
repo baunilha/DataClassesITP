@@ -17,21 +17,20 @@
                 {{ form.title(class='myTextboxCssClass', type='textarea') }}
                 {{ render_error(form.title) }}  {# render_error inside _form_helpers.html #}
                 </p>
-                <!--
-                {{ form.title.label(class='myLabelCssClass') }}
-                <input type="text" id="title" name="title">
-                -->
+               
+        </div> 
+
+        <div class="row-fluid">
 
                 <p>
                 <label for="instructor">Instructor</label>
                 {{ form.instructor(class='myTextboxCssClass', type='textarea') }}
                 {{ render_error(form.instructor) }}  {# render_error inside _form_helpers.html #}
                 </p>
-                <!--
-                {{ form.instructor.label(class='myLabelCssClass') }}
-                <input type="text" id="instructor" name="instructor" value="{{ form.instructor }}">
-                -->
 
+        </div>
+
+        <div class="row-fluid">
                 <p>
                 <label>Categories</label>
                 <em><span class="help-block">(Select as many as you need)</span></em>
@@ -42,17 +41,18 @@
                 <input type="checkbox" name="categories" value="{{ c|replace(" ","_") }}" {% if c|replace(" ","_") in form.categories.data %}checked=checked{% endif %} > {{ c|title }}
                 </label>
                 {% endfor %}
-                <!-- Book Genre -->
                 </p>
+        </div>
+
+        <div class="row-fluid">
 
                 <br>
                 <label for="description">Description</label>
                 {{ render_textarea(form.description, cols="50", rows="6") }} {# render_textarea inside _form_helpers.html #}
                 {{ render_error(form.description) }} {# render_error inside _form_helpers.html #}
-                <!--
-                {{ form.description.label }}
-                <input type="text" id="description" name="description">
-                -->
+        </div>
+
+        <div class="row-fluid">
 
                 <hr>
                 <p>
@@ -65,18 +65,8 @@
                 {{ form.year(class='myTextboxCssClass', type='textarea') }}
                 {{ render_error(form.year) }}  {# render_error inside _form_helpers.html #}
                 </p>
-                <!--
-                {{ form.year.label(class='myLabelCssClass') }}
-                <input type="text" id="year" name="year">
-                -->
 
-                <!--
-                <hr>
-                <p>
-                <label for="units">Units</label>
-                {{ form.units }}
-                </p>
-                -->
+        </div>
                 
                 <button type="submit" class="btn btn-info btn-large">Add Course</button>
           </form>
