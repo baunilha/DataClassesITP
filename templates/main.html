@@ -9,23 +9,28 @@
 
 	<!-- left column -->
 	<div class="span12">
+		<h4 class="site_description"><em> # Hi. Ever wondered what a class is really like before you register for it? You've come to the right place. Use this site to read student reviews of ITP courses and leave your comments on the classes you've taken. It's quick and easy and will hopefully take the guess-work out of choosing your classes.
+		</em></h4>
 		<br/>
-		<h3 class="offset3">Search classes by <a href="http://coursesitp.herokuapp.com/category/web">category here.</a></h3>
-		
-		<!-- <h3 class="offset3">or by semester</h3> -->
-		<div class="offset3">
+		<hr/>
+
+		<div class="span12">
 			<form class="form-inline" name="semester_filter" action="/filter" method="post">
-				<label><h3>or by semester</h3></label>
+				<label><h3 class="search_by">Search classes by <a href="http://coursesitp.herokuapp.com/category/3D">category</a> or by semester</h3></label>
 				<select style="margin-bottom:5px;margin-left:5px" name="filter">
 				<option value="--">- select -</option>
+				<option value="Spring,2012">Spring, 2012</option>
 				<option value="Fall,2012">Fall, 2012</option>
 				<option value="Spring,2013">Spring, 2013</option>
 				</select>
-				<button style="margin-bottom:4px" type="submit" class="btn">Go</button>
-			</form>
+				<button style="margin-bottom:2px" type="submit" class="btn btn-info">Go</button>
+			</form></h3>
 		</div>
+
+		<br/>
+		<br/>
 		<hr/>
-		
+		<br/>
 		<h2>|| {{ semester[0] + " " + semester[1] }}</h2>
 		
 		{% for course in courses %}

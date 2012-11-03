@@ -28,7 +28,7 @@ app.logger.debug("Connecting to MongoLabs")
 
 
 # Create the lists that match the name of the ListField in the models.py
-categories = ['3D','Analog Craft','Animation','Art','Audio','Biology','Business','Computer Vision','Critique','Data','Children','Design','Developing Nations','Education','Environment','Exhibit','Fabrication','Foundation','Game','Installation','Internet','Journalism','Mobile','Music','Narrative','Networks','Performance','Physical Computing','Politics','Programming','Projection','Science','Social Media','Seminar','Sustainable','Teamwork','Video','Visualization','Wearable','Web']
+categories = ['3D','Analog Craft','Animation','Art','Audio','Biology','Business','Computer Vision','Critique','Data','Children','Design','Developing Nations','Education','Environment','Exhibit','Fabrication','Foundation','Game','Installation','Internet','Journalism','Mobile','Music','Narrative','Networks','Performance','Physical Computing','Politics','Programming','Projection','Science','Social Media','Seminar','Sustainable','Teamwork', 'Theory', 'Video','Visualization','Wearable','Web']
 
 # --------- ROUTES ----------
 
@@ -83,9 +83,9 @@ def submit():
 		course.title = request.form.get('title')
 		course.description = request.form.get('description','')
 		course.instructor = request.form.get('instructor')
-		course.slug = slugify(course.title + "-" + course.instructor + "-" + now.strftime("%f"))
 		course.semester = request.form.get('semester')
 		course.year = request.form.get('year')
+		course.slug = slugify(course.title + "-" + course.instructor + "-" + course.semester + "-" + course.year)
 		course.categories = request.form.getlist('categories')
 	
 		course.save()
