@@ -28,7 +28,15 @@
 			<p>{% for cat in course.categories %}
 				<span class="labelnew label-inverse"><a href="/category/{{ cat }}">{{ cat|replace("_"," ")}}</a></span>
 			{% endfor %}</p>
+
+		<br/>
+
+		<h3>Tags by ITPers</h3>
+			<div class="well">
+				<span style="color:black">{{ course.tags }}</span>
+			</div>
 		
+
 		<br/>
 		<hr>	
 		<br/>
@@ -44,7 +52,7 @@
 					<label for="learn"><h3 class="comment3">What did you learn in this class?<h3></label>
 					<textarea type="text" cols="60" rows="3" id="learn" name="learn" class="comment3"></textarea>
 
-					<label for="tags"><h3 class="comment3">Add tags</h3></label>
+					<label for="tags"><h3 class="comment3">Add up to 5 tags that describe this class for you:</h3></label>
 					<textarea type="text" cols="60" rows="1" id="tags" name="tags" class="comment3"></textarea>
 					<em><h4><span class="help-block" style="margin-top:-15px;margin-bottom:25px">(e.g. "fun, snooze town, FTW...")</span></h4></em>
 
@@ -64,14 +72,8 @@
 		<br/>
 		<hr>	
 		<br/>
-			<div class="span11">
-				<h3>Tags by ITPers</h3>
-				<div class="well">
-						<span style="color:black">{{ course.tags }}</span>
-				</div>	
+			
 
-
-			</div>
 			<div class="span11">
 			<!-- DISPLAY COMMENTS -->
 			<h3>Reviews by ITPers ( {{ course.comments|length }} ):</h3>
