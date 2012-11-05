@@ -118,10 +118,12 @@ def course_display(course_slug):
 	except:
 		abort(404)
 
+	tag_str = ", ".join(course.tags)
 
 	# prepare template data
 	templateData = {
-		'course' : course
+		'course' : course,
+		'tags' : tag_str
 	}
 
 	# render and return the template
@@ -190,10 +192,9 @@ def course_comment(course_id):
 	course.comments.append(comment)
 
 	# add tags
-	tags = ""
 	tags = request.form.get('tags')
 	app.logger.debug(tags) #doesn't work here
-	courses.tags.append(tags) #not working
+	course.tags.append(tags) #not working
 
 	# save it
 	course.save()

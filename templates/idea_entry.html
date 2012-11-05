@@ -58,6 +58,7 @@
 					<label>
 					<button type="submit" class="btn btn-info">Comment</button>
 					</label>
+				</hr>
 				</form>
 			</div>
 
@@ -67,7 +68,7 @@
 			<div class="span11">
 				<h3>Tags by ITPers</h3>
 				<div class="well">
-						<span style="color:black">{{ course.tags }}</span>
+						<span style="color:black">{{ tags }}</span>
 				</div>	
 
 
@@ -78,7 +79,7 @@
 				{% for comment in course.comments %}
 				<div class="comment">
 					<span class="commenter">
-						<h3 class="review_count">Review {{ course.comments|count }}:</h3>
+						<h3 class="review_count">Review {{ loop.index }}:</h3>
 						<h4 class="comment3">|| About the class and instructor:</h4> 
 						<p> {{ comment.like }} </p> </span>
 					<br>
@@ -90,7 +91,7 @@
 					<br>
 					<p><small><em>--- Added: {{ comment.timestamp.strftime("%a %m/%d %I:%M%p ") }}</em></small></p>
 				</div>
-				<hr>
+				</hr>
 				{% endfor %}
 
 		</div>
