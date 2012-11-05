@@ -202,6 +202,17 @@ def course_comment(course_id):
 	return redirect('/courses/%s' % course.slug)
 
 
+# Kill All Documents Page
+@app.route("/yesiwanttokilleverything")
+def kill():
+
+	courses = models.Course.objects
+	for c in courses:
+		c.delete()
+
+	return redirect("/")
+
+
 
 # Errors...
 @app.errorhandler(404)
