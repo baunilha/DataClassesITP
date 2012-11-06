@@ -34,12 +34,21 @@ categories = ['3D','Analog Craft','Animation','Art','Audio','Biology','Business'
 
 
 # this is our MAIN PAGE
-@app.route("/")
+@app.route("/", methods= ['GET', 'POST'])
 def index():
 
+	semester = "Fall"
+	year = "2012"
+
+	filtered_courses = []
+	all_courses = models.Course.objects()
+	for c in all_courses:
+		if c.semester.lower() == semester.lower() and c.year == year:
+			filtered_courses.append(c)
+
 	templateData = {
-		'courses'  : models.Course.objects(),
-		'semester' : ["Fall", "2012"]
+		'courses' : filtered_courses,
+		'semester' : [semester, year]
 	}
 	return render_template("main.html", **templateData)
 
@@ -200,17 +209,6 @@ def course_comment(course_id):
 	course.save()
 
 	return redirect('/courses/%s' % course.slug)
-
-
-# Kill All Documents Page
-@app.route("/yesiwanttokilleverything")
-def kill():
-
-	courses = models.Course.objects
-	for c in courses:
-		c.delete()
-
-	return redirect("/")
 
 
 
