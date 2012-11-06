@@ -55,6 +55,28 @@ def index():
 	}
 	return render_template("main.html", **templateData)
 
+
+# Search Page
+@app.route("/search", methods=['POST'])
+def search():
+
+	search_courses = []
+	search_str = request.form.get('search')
+
+	search_display = models.Course.objects()
+	search_display = models.Course.objects(title__icontains=search_str)
+
+	for s in search_display:
+		search_courses.append(s)
+
+	templateData = {
+		'courses' : search_courses
+	}
+
+	return render_template("search.html", **templateData)
+
+
+# filtering semester and year to show in the main page
 @app.route("/filter", methods=['POST'])
 def filter():
 
