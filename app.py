@@ -42,7 +42,10 @@ def index():
 
 	filtered_courses = []
 	all_courses = models.Course.objects()
-	for c in all_courses:
+
+	all_courses_sort = sorted(all_courses, key=lambda k: k['title']) 
+
+	for c in all_courses_sort:
 		if c.semester.lower() == semester.lower() and c.year == year:
 			filtered_courses.append(c)
 
@@ -62,7 +65,9 @@ def filter():
 	year = both[1]
 
 	all_courses = models.Course.objects()
-	for c in all_courses:
+	all_courses_sort = sorted(all_courses, key=lambda k: k['title']) 
+
+	for c in all_courses_sort:
 		if c.semester.lower() == semester.lower() and c.year == year:
 			filtered_courses.append(c)
 
