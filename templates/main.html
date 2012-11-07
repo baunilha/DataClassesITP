@@ -39,6 +39,7 @@
 				<span class="label label-inverse"><a href="/category/{{ cat }}">{{ cat|replace("_"," ")}}</a></span>
 			{% endfor %}</p>
 			<p>{{ course.description }}</p>
+			<h4><a href="/courses/{{ course.slug }}">-- Reviews ( {{ course.comments|length }} )</a></h4>
 			<hr/>
 		{% endfor %}
 		
