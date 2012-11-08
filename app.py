@@ -4,6 +4,8 @@ import os, datetime
 import re
 from unidecode import unidecode
 
+from flask import jsonify
+
 from flask import Flask, request, render_template, redirect, abort
 
 # import all of mongoengine
@@ -237,6 +239,66 @@ def course_comment(course_id):
 
 	return redirect('/courses/%s' % course.slug)
 
+# Data in JSON
+@app.route('/data/courses')
+def data_courses():
+
+	# query for the courses - returning alphabetical order
+	all_courses = models.Course.objects()
+	all_courses_order = sorted(all_courses, key=lambda k: k['title'])
+
+	if all_courses_order:
+
+		# list to hold courses
+		public_courses = []
+
+		#prep data for json
+		for c in all_courses_order:
+
+			tmpCourse = {
+				'title' : c.title,
+				'description' : c.description,
+				'instructor' : c.instructor,
+				'semester' : c.semester,
+				'year' : c.year,
+				'categories' : c.categories,
+				'tags' : c.tags
+			}
+
+			# reviews/comments - our embedded documents
+			tmpCourse['comments'] = [] # list - will hold all comment dictionaries
+
+			# loop through courses reviews/comments
+			for m in c.comments:
+				comment_dict = {
+					'like' : m.like,
+					'learn' : m.learn,
+					'recommendation' : m.recommendation,
+					'timestamp' : str( m.timestamp )
+				}
+
+				# append comment_dict to ['comments']
+				tmpCourse['comments'].append(comment_dict)
+
+			# insert idea dictionary into public_courses list
+			public_courses.append( tmpCourse )
+
+		# prepare dictionary for JSON return
+		data = {
+			'status' : 'OK',
+			'all_courses_order' : public_courses
+		}
+
+		# jsonify (imported from Flask above)
+		# will convert 'data' dictionary and set mime type to 'application/json'
+		return jsonify(data)
+
+	else:
+		error = {
+			'status' : 'error',
+			'msg' : 'unable to retrieve ideas'
+		}
+		return jsonify(error)
 
 
 # Errors...
