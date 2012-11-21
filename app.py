@@ -25,7 +25,6 @@ app.logger.debug("Connecting to MongoLabs")
 
 
 
-
 # ----------- Lists -----------
 
 
@@ -39,8 +38,8 @@ categories = ['3D','Analog Craft','Animation','Art','Audio','Biology','Business'
 @app.route("/", methods= ['GET', 'POST'])
 def index():
 
-	semester = "Fall"
-	year = "2012"
+	semester = "Spring"
+	year = "2013"
 
 	filtered_courses = []
 	all_courses = models.Course.objects()
@@ -56,7 +55,6 @@ def index():
 		'semester' : [semester, year]
 	}
 	return render_template("main.html", **templateData)
-
 
 # Search Page
 @app.route("/search", methods=['POST'])
@@ -113,7 +111,7 @@ def submit():
 	
 	if request.method == "POST" and course_form.validate():
 	
-		now = datetime.datetime.now()
+		# now = datetime.datetime.now()
 
 	# get form data - create new course
 		course = models.Course()
@@ -300,6 +298,17 @@ def data_courses():
 		}
 		return jsonify(error)
 
+
+		
+@app.route("/killalloftype")
+def killalloftype():
+# 	all_courses = models.Course.objects()
+# 	for c in all_courses:
+# 		if '2013' in c.year:
+# 			c.delete()
+# 			app.logger.debug( "DELETED: " + c.title )
+
+	return redirect("/")
 
 # Errors...
 @app.errorhandler(404)
