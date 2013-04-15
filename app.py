@@ -38,7 +38,7 @@ categories = ['3D','Analog Craft','Animation','Art','Audio','Biology','Business'
 @app.route("/", methods= ['GET', 'POST'])
 def index():
 
-	semester = "Spring"
+	semester = "Fall"
 	year = "2013"
 
 	filtered_courses = []
